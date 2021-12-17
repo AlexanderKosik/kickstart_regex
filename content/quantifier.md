@@ -54,7 +54,7 @@ print(10, re.search("a.?z", "az"))
 print(11, re.search("a.?z", "abcz"))
 ```
 
-## Exercise "Valid Filenames"
+## Exercise "Valid file names"
 Let's do an exercise. 
 
 We want to validate file names. In our case valid file names contain:

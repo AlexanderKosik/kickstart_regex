@@ -56,6 +56,9 @@ print("Good RegEx")
 ```
 
 ## Exercise "is integer"
+
+We write a function with a regular expression which evaluates, if a given string is an integer. 
+
     is_integer(string) -> bool
     Function should evaluate if given string is a valid integer. 
 
@@ -69,7 +72,8 @@ print("Good RegEx")
 import re
 
 def is_integer(string):
-    match = re.search(r"^-?\d+$", string)
+    # Replace ... with regex
+    match = re.search(r"...", string)
     return match is not None
 
 assert is_integer("42") is True
@@ -78,7 +82,10 @@ assert is_integer("-") is False
 assert is_integer(" 42") is False
 assert is_integer("0.0") is False
 assert is_integer("+999") is False
+print("Good RegEx")
 ```
+
+We finish this chapter with a little smile.
 
 ![Problems](ressources/perl_problems.png "Perl problems")
 
