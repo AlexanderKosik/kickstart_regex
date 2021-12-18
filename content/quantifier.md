@@ -2,7 +2,11 @@
 
 # Quantifiers
 
-With *quantifiers* we can specify how often a (Meta-)Character will be matched. 
+In the last exercise we wrote a filename validator which might look like this: `r"........\...."`. We had 8 arbitrary characters followd by a literal dot followed by 3 arbitrary characters. 
+
+This is kind of hard to read. So there must be a better way to specify how many times we want a character or meta character to match. 
+
+With *quantifiers* we can specify exactly that. We can tell the RegEx how often a (Meta-)Character must match. 
 
 The following quantifiers are available:
 ```
@@ -15,10 +19,24 @@ The following quantifiers are available:
     {10,20}  10..20
 ```
 
-A quantifier must be places behind the character to match.
+A quantifier must be places behind the match character. So in our previous exercise we could simplify the regex like this: 
 
-## Examples
-### `*` quantifier
+```python
+import re
+
+def simple_validator(filename):
+    # Replace ... with valid RegEx
+    m = re.search(r".{8}\..{3}", filename)
+    return m is not None
+```
+
+Match an arbitrary character exactly 8 times, than match a dot and than match an arbitrary character exactly 3 times. 
+
+Yeeih! That's cool! Let's have a closer look on some other quantifiers.
+
+## `*` quantifier
+The `*` quantifier specifies that an character may have any number of hits. Any number means **zero** hits, as well as 1.000.000 hits, as well as 40 hits, as well as ... I think you get it.
+
 ```python
 # * matches 0..x
 
@@ -34,36 +52,40 @@ Try to figure out if the following statements are a match, or no match. You can 
 # {3, } matches 3..x times
 
 print(4, re.search(r"a.{3}z", "abz"))           # Match or no match?
-print(5, re.search(r"a.{3,}z", "abcdz"))        
-print(6, re.search(r"a.{3,}z", "abcdedfgz"))    
+print(5, re.search(r"a.{3,}z", "abcdz"))        # Match or no match?
+print(6, re.search(r"a.{3,}z", "abcdedfgz"))    # Match or no match?
 ```
 
-### `+` and `?` quantifier
+## `+` and `?` quantifier
+The `+` quantifier specifies that an character may have one to any number of hits. So we must have **at least** 1 hit. 
+
+Look at these examples. Will they match?
 ```python
 # + matches 1..x times
 
-print(7, re.search(r"a.+z", "abz"))
-print(8, re.search(r"a.+z", "az"))
+print(7, re.search(r"a.+z", "abz"))     # Match or no match?
+print(8, re.search(r"a.+z", "az"))      # Match or no match?
 ```
+
+For a character marked with the `?` quantifier to be matched, it must appear exactly once or must not appear. So it marks something as *optional*.
 
 ```python
 # ? matches 0..1 times
 
-print(9, re.search("a.?z", "abz"))
-print(10, re.search("a.?z", "az"))
-print(11, re.search("a.?z", "abcz"))
+print(9, re.search("a.?z", "abz"))      # Match or no match?
+print(10, re.search("a.?z", "az"))      # Match or no match?
+print(11, re.search("a.?z", "abcz"))    # Match or no match?
 ```
 
-## Exercise "Valid file names"
-Let's do an exercise. 
+## Exercise 
+Let's revisit the valid filename exercise again.
 
-We want to validate file names. In our case valid file names contain:
+A valid filename is now specified as this:
 
 - at least 1 arbitrary character
 - followed by a dot "`.`"
 - followed by at least 3 arbitrary characters
 
-If you are using Python copy the following code in an interactive session:
 ```python
 import re
 # Validate file names
@@ -81,7 +103,7 @@ assert valid_filename("test.text") is True
 print("Good RegEx!")
 ```
 
-## Exercise "Valid emails"
+## Exercise II: "Valid emails"
 In this simplified example we want to validate emails. In our example a valid email is definied as followed:
 
 - at least 1 arbitrary character
@@ -90,7 +112,7 @@ In this simplified example we want to validate emails. In our example a valid em
 - followed by a dot "`.`"
 - followed by at least 2 arbitrary characters
 
-*Please be aware that validating email is a lot more complex in real world. This is just a simplfied version. So do not use this in production code! ;)* 
+*Please be aware that validating email is a lot more complex in real world. This is just a simplfied version. So do not use this validator in production code! ;)* 
 
 ```python
 import re
@@ -106,6 +128,8 @@ assert bad_email_validator("@xyz.com") is False             # invalid
 assert bad_email_validator("hugo@.com") is False            # invalid
 print("Good RegEx!")
 ```
+
+We are well on the way to becoming a RegEx Hero!
 
 ![Save the world](ressources/re1.png "Save the world")
 
