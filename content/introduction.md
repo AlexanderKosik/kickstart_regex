@@ -8,14 +8,23 @@ No introduction to Regular Expressions without the famous words of Jamie Zawinsk
 
 Regular Expressions are a powerful tool which should be in every developers toolkit. But be aware, that they are not the solution to every problem.
 
-But what are Regular Expressions (or short: *RegEx*)?
+But what are Regular Expressions (or short: *RegEx*) good for?
 
-Regular Expressions are used for matching a string within a string. With a RegEx you can:
+**It is all about data**. RegEx offer us a way to control and master data. For example by an automatic extraction of specific rows from a very large file. Or by validating data that comes from a foreign source, for example from a user input. 
 
-    - check, if a string is contained in a string
-    - extract information (e.g. substrings) out of a string
+So in most cases Regular Expressions are used for matching a string within another bigger string or file:
 
-If we look at modern programming languages like Python, the builtin string method is already quite powerful. Let's look at some of Pythons string methods in action. 
+    - We check, if a string is contained in a string (so if it is a substring)
+    - We extract information out of a string or file
+    - We replace content if it matches certain criteria
+
+Regular Expressions apear in a wide variety of domains. It is very often used in the context of unix operating systems where we have specific tools like *grep*, *sed* and *awk*, all of those support RegExp. 
+
+The programming language *Perl* is predestined for RegExp. But also languages like C++ (since C++11) or Java support Regular Expressions. 
+
+Within this course we will mostly focus on the Python programming language due to its simple syntax. 
+
+If we look at methods of the builtin string type in Python we realize, that these methods are already quite powerful. Let's look at some of Pythons string methods in action. 
 
 ```python
 # Check if a string is contained in another string
@@ -52,9 +61,9 @@ print(any(c in "Hello World" for c in 'aeiou'))
 ```
 
 ## Limitations
-The shown examples are quite simple but show the usage of builtin functions and methods of the Python string object well. The solutions are not only restricted to Python, similar methods exists in most other modern Programming Languages like Java or C++. 
+The shown examples are quite simple but show the usage of builtin functions and methods of the Python string object well. The solutions are not only restricted to Python, similar methods exists in most other modern Programming Languages. 
 
-So in most cases we are good to go when we use what's available in our string methods and ignore RegEx at all. 
+The point is that in most cases we are good to go when we use what's available in our string methods and ignore RegEx at all. 
 
 But there are also cases were we reach the limit of what is possible with builting methods. Here are some examples. What if:
 
