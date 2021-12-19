@@ -27,13 +27,13 @@ import re
 m = re.search(r"Fatal error", "Successful login to bender007")
 print(m)    # prints None because `Fatal error` was not found in string
 
-m = re.search(r"error", "Random errormessage just to annoy you.")
+m = re.search(r"error", "Random error message just to annoy you.")
 print(m)    # <re.Match object; span=(7, 12), match='error'>
 ```
 
 In these two examples we used the `re.search` method to search for a string within in string. That is nothing fancy, we did more or less the same by using the `in` operator in the example from the introduction. The only new thing is the usage of the Regular Expression module in Python. 
 
-Python has a special string prefix to create a `raw string`. Since these `raw strings` are quite useful we will take a closer look at them in brief.
+Python has a special string prefix to create a `raw string`. Since these `raw strings` are very useful in the context of RegEx we will take a closer look at them in brief.
 
 ## Using Pythons string prefix "`r`"
 When using the Python Programming language we have several special string prefixes available. By using the string prefix `r` we create a `raw string`. 
@@ -81,7 +81,7 @@ print(b_euro, b_dollar)
 So what's the matter with RegEx?!
 
 ## The Power of Meta Characters
-Most characters match exactly on itself. The RegEx `r"100€"` from the previous examples will match exactly on the string `100€`, `r"test"` will match exactly on the string `test`. 
+Most characters match exactly on itself. The pattern `r"100€"` from the previous examples will match exactly on the string literal `100€`, `r"test"` will match exactly on the string literal `test`. 
 
 But there are exceptions. These exceptions are called `meta characters`. 
 
