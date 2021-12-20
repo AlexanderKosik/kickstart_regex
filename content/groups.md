@@ -1,6 +1,6 @@
 # Groups
 
-So far we have printed the whole match object most of the time. What if we only want to print/process the actual match or just a part of the match?
+So far we have printed the whole match object most of the time. What if we only want to print or process the actual match or just a part of the match?
 
 This is where groups come into play. 
 
@@ -10,8 +10,75 @@ import re
 match = re.search(r"\d{5}", "07231")
 print(match.group())    # will only print the match 07231
 ```
+We can use *groups* in multiple ways.
 
-We can use *groups* in multiple ways. One common use-case is to be able to use quantifiers for multiple characters. 
+## Groups: Remember sub-matches
+We define groups with round brackets `( )`. Everything within this group will be captured and can be references later on. 
+
+Let's say you have a list of filenames but only want to capture PDF files beginning with a specific string like `invoice`. 
+
+Write a RegEx that will match theses files. 
+```python
+import re
+
+files = [
+    "holiday1999.png",
+    "invoice_car_insurance.pdf",
+    "invoice_telekom2021.pdf", 
+    "invoice_vattenfall2021.pdf", 
+    "manual_mazda_cx5.pdf",
+    "passport.jpg",
+    "resumee.pdf", 
+]
+
+# place your regex here
+pattern = r"..."
+filtered = [re.match(pattern, file).group() for file in files if re.match(pattern, file)]
+
+assert len(filtered) == 3, "list length is 3"
+assert "invoice_car_insurance.pdf" in filtered
+assert "invoice_telekom2021.pdf" in filtered
+assert "invoice_vattenfall2021.pdf" in filtered
+print(filtered)
+print("Good RegEx")
+```
+
+If your RegEx is correct you will see, that the list contains the 3 invoice files. What if we only want the filename, without the file ending `pdf`? We could filter our list afterwards and remove the filename, but it would be nice to have this done by our RegEx. 
+
+We can do this with groups. So your RegEx might look like this: `pattern = r"^invoice_[\w]+\.pdf$"`. If we now want to be able to reference the actual filename without ending, we can put round brackets around these characters. 
+
+```python
+import re
+
+files = [
+    "holiday1999.png",
+    "invoice_car_insurance.pdf",
+    "invoice_telekom2021.pdf", 
+    "invoice_vattenfall2021.pdf", 
+    "manual_mazda_cx5.pdf",
+    "passport.jpg",
+    "resumee.pdf", 
+]
+
+# Usage of round brackets around the file name
+pattern = r"^(invoice_[\w]+)\.pdf$"
+
+# we reference the group (we use `group(1)` explicitly)
+filtered = [re.match(pattern, file).group(1) for file in files if re.match(pattern, file)]
+
+assert len(filtered) == 3, "list length is 3"
+assert "invoice_car_insurance" in filtered
+assert "invoice_telekom2021" in filtered
+assert "invoice_vattenfall2021" in filtered
+print(filtered)
+print("Good RegEx")
+```
+As you see when `filtered` got printed the filenames now only contain the content of our specified group. 
+
+We can reference groups by index. Every opening round bracket will create a new index we can reference back on later. The first group starts with index 1. If we want to access a group that is not available, we will get an error. 
+
+## Groups: Packing things together
+Another common use-case is to be able to use quantifiers for multiple characters. Have a look at these examples.
 
 ```python
 
@@ -30,6 +97,15 @@ print(m.group())
 m = re.search(r"([abc]{3}){3}", "abccbacbca")
 print(m.group())
 ```
+
+As you have seen in the examples above we can use groups to be able to repeat certain patterns with a quantifier. 
+
+## Groups: Alternation
+Another use case for groups is using alternations. The meta character `|` means `or` and we can combine multiple RegEx with that. 
+
+Suppose we want to extract the salutation of a letter. The salutation may be "Dear Sir" or Dear Madamme". 
+
+We could write a RegEx which matches one or the other like this: `r"Dear (Sir|Madamme)"`. This will match on both cases but not if Sir or Madamme are missing. Be aware, that we can use every meta characters or "Sub RegEx" within the groups, not just string literals as seen in this example. 
 
 ## Exercise (Valid mobile number)
 
@@ -53,8 +129,8 @@ assert is_valid(invalid)) == False, "Check invalid number"
 print("Good RegEx")
 ```
 
-# Printing groups
-If we use *groups* in a regular expression we can use these groups separatly if the RegEx matches. Have a look at this example
+# Alternation and capturing example
+Have a look at this example which makes use of group alternation and referencing different capture groups for printing.
 
 ```python
 number = "0179/123456789"
@@ -69,7 +145,19 @@ print("Second part:", m.group(2))
 print("Third part:", m.group(3))    # IndexError
 ```
 
-Every specified group can be extracted using a group index starting from 1 for the first group. The index is increased for every following group. If we want to get a group that is not available, we will get an error.
-
 ## Exercise (Valid hour)
 We want to write a RegEx which will verify valid times. 
+
+```python
+def valid_hour(string):
+    # insert regex here
+    return re.search(r"...", string) is not None
+
+assert valid_hour("00:00") is True
+assert valid_hour("23:59") is True
+assert valid_hour("24:00") is False
+assert valid_hour("25:59") is False
+assert valid_hour("15:20") is True
+assert valid_hour("23:60") is False
+print("Good RegEx")
+```
