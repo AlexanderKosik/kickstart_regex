@@ -222,5 +222,8 @@ We finish this chapter by giving an overview over our known quantifiers.
 | `*`          |    none       |   no limit    | *any amount okay* |
 | `+`          |        1      |    no limit   | *at least one*|
 | `{x}`        |        x      |    x          | *exacty x times*|
+| `{x,y}`      |        x      |    y          | *between x and y times*|
+
+*Hint: Pay attention that there is no space after the `,` in `{x,y}`. So a quantifier like this will **not** work: `{3, 10}`.*
 
 [Overview](./overview.md) | [Back (Meta-Characters)](./meta.md) | [Next (Character classes)](./char_classes.md) 
