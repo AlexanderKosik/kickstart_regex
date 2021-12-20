@@ -214,12 +214,13 @@ We are well on the way to becoming a RegEx Hero!
 
 ![Save the world](ressources/re1.png "Save the world")
 
-We finish this chapter by giving an overview over our quantifiers.
-| Quantifier   | Min           |  Max  | Meaning |
-|:------------:|:-------------:|:-----:|---------|
-| `?` |  none    | 1             | *one optional*  |
-| `*` |    none  |   no limit    | *any amount okay* 
-| `+` |        1 |    no limit   | *at least one*
-| `{x}` |        x |    x   | *exacty x times*
+We finish this chapter by giving an overview over our known quantifiers.
+
+| Quantifier   | Min           |  Max          | Meaning           |
+|:------------:|:-------------:|:-------------:|-------------------|
+| `?`          |  none         | 1             | *one optional*  |
+| `*`          |    none       |   no limit    | *any amount okay* |
+| `+`          |        1      |    no limit   | *at least one*|
+| `{x}`        |        x      |    x          | *exacty x times*|
 
 [Overview](./overview.md) | [Back (Meta-Characters)](./meta.md) | [Next (Character classes)](./char_classes.md) 
