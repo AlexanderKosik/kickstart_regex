@@ -2,7 +2,7 @@
 
 # Anchors
 
-With anchors we can match positions. For example if we want to match specific characters only on the beginning of the line or the end of the line
+With anchors we can match positions. For example if we want to match specific characters only on the beginning of the line or the end of the line.
 
 The following anchors exist:
 
@@ -13,6 +13,12 @@ The following anchors exist:
              Matches, without consuming any characters, immediately between a character 
              matched by \w and a character not matched by \w (in either order)
 
+So here we have the circumflex `^` again. If you remember from the previous chapter we had the `^` specified as a negated character class. 
+
+This is why the character classes can be seen as a separate mini-language within RegEx. **Within** a character class a `^` means **negating**, **outside** of character classes it means `Line Beginning`.
+
+So don't be confused. Just make sure in which context you are and depending on that context the `^` has different meanings.
+
 ## Examples with anchors
 ```python
 s = "Error on columbia01. A Fatal Error occured!"
@@ -22,13 +28,15 @@ s = "Subject: fire. Dear Sir/Madam, I am writing to inform you of a fire"
 print(re.findall(r"fire$", s))
 
 s = "A38, 42, 36, 48"
-print(re.findall(r"\b[0-9]{2}\b", s))
-# print(re.findall(r"[0-9]{2}", s))
+print("With word boundaries:", re.findall(r"\b[0-9]{2}\b", s))
+
+# compare the result of the upper print with the following findall
+print("Without word boundaries:", re.findall(r"[0-9]{2}", s))
 ```
 
 ## Exercise "valid file names" revisited
 
-Let's take the valid file names more seriously. In Windows OS the following symbols may no be used in a file name: `\/:*?"<>|`
+Let's take the valid file names more seriously. In the Windows OS the following symbols may no be used in a file name: `\/:*?"<>|`
 
 ![Windows valid filenames](ressources/filename.png "Windows valid filename")
 
@@ -40,7 +48,8 @@ This means our restrictions are as followed:
 
 ```python
 def valid_filename(filename):
-    m = re.search(r"^[^\/:*?<>|]+\.", filename)
+    # insert regex here
+    m = re.search(r"...", filename)
     return m is not None
 
 assert valid_filename("test.txt") is True
