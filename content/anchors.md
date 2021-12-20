@@ -15,9 +15,9 @@ The following anchors exist:
 
 So here we have the circumflex `^` again. If you remember from the previous chapter we had the `^` specified as a negated character class. 
 
-This is why the character classes can be seen as a separate mini-language within RegEx. **Within** a character class a `^` means **negating**, **outside** of character classes it means `Line Beginning`.
+This is why the character classes can be seen as a separate mini-language within RegEx. **Within** a character class a `^` means **negating**, **outside** of character classes it means `beginning of the line`.
 
-So don't be confused. Just make sure in which context you are and depending on that context the `^` has different meanings.
+So don't be confused with that. When you encounter an `^` make sure in which context you are and depending on that context the `^` has different meanings.
 
 ## Examples with anchors
 ```python
@@ -33,6 +33,8 @@ print("With word boundaries:", re.findall(r"\b[0-9]{2}\b", s))
 # compare the result of the upper print with the following findall
 print("Without word boundaries:", re.findall(r"[0-9]{2}", s))
 ```
+
+By using word boundaries you can avoid getting hits within other words, as seen in the last example. 
 
 ## Exercise "valid file names" revisited
 
