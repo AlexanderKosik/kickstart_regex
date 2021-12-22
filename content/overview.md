@@ -8,6 +8,7 @@
 * [4. Character classes](char_classes.md)
 * [5. Anchors](anchors.md)
 * [6. Groups](groups.md)
+* [7. Lookaround](lookaround.md)
 
 [Home](../README.md)
 
