@@ -1,3 +1,5 @@
+[Overview](./overview.md) | [Back (Anchors)](./anchors.md) | [Next (Lookaround)](./lookaround.md) 
+
 # Groups
 
 So far we have printed the whole match object most of the time. What if we only want to print or process the actual match or just a part of the match?
@@ -101,11 +103,11 @@ print(m.group())
 As you have seen in the examples above we can use groups to be able to repeat certain patterns with a quantifier. 
 
 ## Groups: Alternation
-Another use case for groups is using alternations. The meta character `|` means `or` and we can combine multiple RegEx with that. 
+Another use case for groups is using alternations. The meta character `|` means `or` and we can combine multiple RegEx within a group with that. 
 
 Suppose we want to extract the salutation of a letter. The salutation may be "Dear Sir" or Dear Madamme". 
 
-We could write a RegEx which matches one or the other like this: `r"Dear (Sir|Madamme)"`. This will match on both cases but not if Sir or Madamme are missing. Be aware, that we can use every meta characters or "Sub RegEx" within the groups, not just string literals as seen in this example. 
+We could write a RegEx which matches one or the other like this: `r"Dear (Sir|Madamme)"`. This will match on both cases but not if Sir and Madamme are missing. Be aware, that we can use every meta characters or "Sub RegEx" within the groups, not just string literals as seen in this example. 
 
 ## Exercise (Valid mobile number)
 
@@ -161,3 +163,7 @@ assert valid_hour("15:20") is True
 assert valid_hour("23:60") is False
 print("Good RegEx")
 ```
+
+There is another use case for groups, the so called look around groups. We will have a look at them in the next chapter. 
+
+[Overview](./overview.md) | [Back (Anchors)](./anchors.md) | [Next (Lookaround)](./lookaround.md) 
