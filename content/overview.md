@@ -9,6 +9,7 @@
 * [5. Anchors](anchors.md)
 * [6. Groups](groups.md)
 * [7. Lookaround](lookaround.md)
+* [8. Substitution](sub.md)
 
 [Home](../README.md)
 
