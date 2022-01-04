@@ -2,7 +2,7 @@
 
 # Anchors
 
-With anchors we can match positions. For example if we want to match specific characters only on the beginning of the line or the end of the line.
+In this chapter we will learn about anchors. With anchors we can match positions. For example if we want to match specific characters only on the beginning of the line or the end of the line.
 
 The following anchors exist:
 
@@ -21,6 +21,8 @@ So don't be confused with that. When you encounter an `^` make sure in which con
 
 ## Examples with anchors
 ```python
+import re
+
 s = "Error on columbia01. A Fatal Error occured!"
 print(re.findall(r"^Error", s))
 
@@ -71,7 +73,7 @@ print("Good RegEx")
 We write a function with a regular expression which evaluates, if a given string is an integer. 
 
     is_integer(string) -> bool
-    Function should evaluate if given string is a valid integer. 
+    The function should evaluate if given string is a valid integer. 
 
     We define valid integers as this:
 
@@ -101,3 +103,5 @@ We finish this chapter with a little smile.
 ![Problems](ressources/perl_problems.png "Perl problems")
 
 [Overview](./overview.md) | [Back (Character classes)](./char_classes.md) | [Next (Groups)](./groups.md) 
+
+<!-- Solution valid filenames:  r'^[^\\/*:?"<>|]+\.[^\\/*:?"<>|]{3}$' -->
