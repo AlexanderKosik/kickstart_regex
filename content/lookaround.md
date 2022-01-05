@@ -19,9 +19,16 @@ print(re.search(r"Alex(?=ander)", "My name is Alexander") is not None)
 # will not match because `ander` is missing
 print(re.search(r"Alex(?=ander)", "My name is Alex") is not None) 
 ```
+So the RegEx works like this:
+
+    - Match capital `A`? Yes, proceed.
+    - Match `l`? Yes, proceed
+    - Match `e`? Yes, proceed
+    - Match `x`? Yes, proceed
+    - Is to the right of that `x` a literal `ander`? Yes, so we have a match 
 
 ## Lookback
-We can do the same in opposite direction by using a lookback group. This group is defined with `(?<=)`. 
+We can do the same in opposite direction by using a lookback group. This group is defined with `(?<=)`. The char `<` looks like an arrow to the left. This can be used a as a mnemonic.
 
 So if we want to match a number only if on the left side is a dollar sign we can do something like this:
 
