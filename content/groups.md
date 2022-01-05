@@ -10,16 +10,23 @@ This is where groups come into play.
 import re
 
 match = re.search(r"\d{5}", "07231")
-print(match.group())    # will only print the match 07231
+if match:
+    print(match.group())    # will only print the match 07231
 ```
-We can use *groups* in multiple ways.
+
+In the above example we will only print the actual match by using `match.group()`. This requires a match object. If `re.search` finds no match it returns a `None` value. Calling a `group()` method on a None value will result in an exception. So checking if we get an actual match object is a good practice to avoid runtime errors. 
+
+Let's see how we can define groups in a RegEx and how to use them in multiple ways.
 
 ## Groups: Remember sub-matches
-We define groups with round brackets `( )`. Everything within this group will be captured and can be references later on. 
+We define groups in a RegEx with round brackets `( )`. Everything within this group will be captured and can be references later on. 
 
-Let's say you have a list of filenames but only want to capture PDF files beginning with a specific string like `invoice`. 
+Let us illustrate this with an example.
 
-Write a RegEx that will match theses files. 
+`files` is a list of filenames. We now want only PDF files beginning with a specific string like `invoice`. 
+
+Start by writing an RegEx that will match on files beginning with `invoice` and ending with `pdf`. 
+
 ```python
 import re
 
@@ -45,7 +52,7 @@ print(filtered)
 print("Good RegEx")
 ```
 
-If your RegEx is correct you will see, that the list contains the 3 invoice files. What if we only want the filename, without the file ending `pdf`? We could filter our list afterwards and remove the filename, but it would be nice to have this done by our RegEx. 
+If your RegEx is correct you will see, that the list contains the 3 invoice files. What if we only want the actual filename, without the file ending `pdf`? We could filter our list afterwards and remove the filename, but it would be nice to have this done by our RegEx. 
 
 We can do this with groups. So your RegEx might look like this: `pattern = r"^invoice_[\w]+\.pdf$"`. If we now want to be able to reference the actual filename without ending, we can put round brackets around these characters. 
 
@@ -77,9 +84,12 @@ print("Good RegEx")
 ```
 As you see when `filtered` got printed the filenames now only contain the content of our specified group. 
 
-We can reference groups by index. Every opening round bracket will create a new index we can reference back on later. The first group starts with index 1. If we want to access a group that is not available, we will get an error. 
+Groups get referenced by index. Every opening round bracket will create a new index we can reference on later. The first group starts with index 1, the next has index 2 and so on. If we want to access a group that is not available, we will get an error. 
+
+So in summary, groups allow us to reference sub-matches later on.
 
 ## Groups: Packing things together
+
 Another common use-case is to be able to use quantifiers for multiple characters. Have a look at these examples.
 
 ```python
@@ -107,9 +117,11 @@ Another use case for groups is using alternations. The meta character `|` means 
 
 Suppose we want to extract the salutation of a letter. The salutation may be "Dear Sir" or Dear Madamme". 
 
-We could write a RegEx which matches one or the other like this: `r"Dear (Sir|Madamme)"`. This will match on both cases but not if Sir and Madamme are missing. Be aware, that we can use every meta characters or "Sub RegEx" within the groups, not just string literals as seen in this example. 
+We could write a RegEx which matches one or the other like this: `r"Dear (Sir|Madamme)"`. This will match on both cases but not if Sir **and** Madamme are missing. Be aware, that we can use every meta characters or "Sub RegEx" within the groups, not just string literals as seen in this example. 
 
 ## Exercise (Valid mobile number)
+
+We will now apply our new knowledge about *groups* in an exercise.
 
 We want to validate some mobile numbers. For that we write a function that returns `True` if passed string contains a valid mobile number, or False otherwise.
 
@@ -144,7 +156,7 @@ print("First part:", m.group(1))
 print("Second part:", m.group(2))
 
 # IndexError. This will not work, because we have no group with index 3
-print("Third part:", m.group(3))    # IndexError
+# print("Third part:", m.group(3))    # IndexError
 ```
 
 ## Exercise (Valid hour)
