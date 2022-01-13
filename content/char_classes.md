@@ -30,6 +30,10 @@ So this is kind of neat. With this knowledge we can improve our IP address valid
 
 ## Exercise: Improved IP validator
 
+With this new information we can improve our IP validator from the last chapter. 
+
+Write a RegEx that will match on `192.168.1.` plus 1 to 3 **numbers**. Other characters than numbers should not be allowed.  
+
 ```python
 import re
 
@@ -179,11 +183,11 @@ Using character classes like [a-z] or [0-9] is very common when writing Regular 
 
 We add some constraints to our email validation (still far from production ready):
 
-- at least 1 arbitrary character (upper or lowercase)
+- at least 1 arbitrary character (upper or lowercase, no number, no special chars)
 - followed by an "`@`" symbol
 - followed by at least 3 arbitrary characters
 - followed by a dot "`.`"
-- followed by at least 2 arbitrary characters (but no numbers)
+- followed by at least 2 arbitrary characters (upper or lowercase, no number, no special chars)
 
 ```python
 import re

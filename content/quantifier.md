@@ -273,8 +273,6 @@ This is definitly not what we want. Can we fix this? Sure, we can! We will see h
 
 [Overview](./overview.md) | [Back (Meta-Characters)](./meta.md) | [Next (Character classes)](./char_classes.md)
 
-#
-
 ## Solutions
 
 Match IP address starting with `192.168.1.`

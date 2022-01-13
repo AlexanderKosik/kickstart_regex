@@ -50,7 +50,22 @@ print(s.startswith("Hello"))            # case sensitive
 print(s.lower().startswith("hello"))    # case insensitive
 ```
 
-Even more complex checks are possible without the use of RegEx. Have a look at this example:
+# Exercise
+
+With this information we can write a function `has_vowel` that will return `True`, if a vowel is in a given string, or `False` otherwise. 
+
+```python
+def has_vowel(s):
+    # replace ... with your code
+    return ...
+
+assert has_vowel("peter") is True
+assert has_vowel("alex") is True
+assert has_vowel("zzz") is False
+assert has_vowel("pffff") is False
+```
+
+Even more complex checks are possible without the use of RegEx. A solution might look like this.
 
 ```python
 # Check if we have a vowel in the passed string
