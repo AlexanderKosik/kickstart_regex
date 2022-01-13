@@ -51,9 +51,19 @@ This means our restrictions are as followed:
 - followed by exactly 3 arbitrary characters, but not `\/:*?"<>|` 
 
 ```python
+# set this to True, if you would like to have the actual match printed
+DEBUG = False
+
 def valid_filename(filename):
     # insert regex here
     m = re.search(r"...", filename)
+
+    if DEBUG:
+        if m: 
+            print("The actual match is:", m.group())
+        else: 
+            print("The actual match is: None")
+
     return m is not None
 
 assert valid_filename("test.txt") is True
@@ -84,9 +94,18 @@ We write a function with a regular expression which evaluates, if a given string
 ```python
 import re
 
+# set this to True, if you would like to have the actual match printed
+DEBUG = False
+
 def is_integer(string):
     # Replace ... with regex
     match = re.search(r"...", string)
+
+    if DEBUG:
+        if m: 
+            print("The actual match is:", m.group())
+        else: 
+            print("The actual match is: None")
     return match is not None
 
 assert is_integer("42") is True
@@ -95,6 +114,7 @@ assert is_integer("-") is False
 assert is_integer(" 42") is False
 assert is_integer("0.0") is False
 assert is_integer("+999") is False
+assert is_integer("--500") is False
 print("Good RegEx")
 ```
 
