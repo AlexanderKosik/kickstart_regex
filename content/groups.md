@@ -139,7 +139,7 @@ def is_valid(number):
 
 assert is_valid(valid_1) == True, "Check valid number with +49"
 assert is_valid(valid_2) == True, "Check valid number with 0179"
-assert is_valid(invalid)) == False, "Check invalid number"
+assert is_valid(invalid) == False, "Check invalid number"
 print("Good RegEx")
 ```
 
