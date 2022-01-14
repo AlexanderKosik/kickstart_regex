@@ -34,7 +34,7 @@ m = re.search(r"error", "Random error message just to annoy you.")
 print(m)    # <re.Match object; span=(7, 12), match='error'>
 ```
 
-In these two examples we used the `re.search` method to search for a string within in string. That is nothing fancy, we did more or less the same by using the `in` operator in the example from the introduction. The only new thing is the usage of the Regular Expression module in Python.
+In these two examples we used the `re.search` method to search for a string within a string. That is nothing fancy, we did more or less the same by using the `in` operator in the example from the introduction. The only new thing is the usage of the Regular Expression module in Python.
 
 Python has a special string prefix to create a `raw string`. Since these `raw strings` are very useful in the context of RegEx we will take a closer look at them in brief.
 
@@ -172,7 +172,7 @@ import re
 
 def simple_validator(filename):
     # Replace ... with valid RegEx
-    m = re.search(r"...", filename)
+    m = re.match(r"...", filename)
     return m is not None
 
 assert simple_validator("test.txt") is False
@@ -183,6 +183,8 @@ assert simple_validator("test.tar.gz") is False
 assert simple_validator("test00100.tx") is False
 print("Good RegEx!")
 ```
+
+*Using `re.match`: We use the `match` function in most of the validation exercises. Compared to the `search` function `match` tries to apply the pattern at the start of the string and this is exactly what we want in most cases.*
 
 Ok, that was cool! But the solution may look a little bit odd (there are a lot of dots in it, isn't it)?
 

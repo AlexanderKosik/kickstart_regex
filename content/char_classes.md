@@ -39,7 +39,7 @@ import re
 
 def better_ip_validator(ip_address):
     # Replace ... with valid RegEx
-    m = re.search(r"...", ip_address)
+    m = re.match(r"...", ip_address)
     return m is not None
 
 assert better_ip_validator("192.168.1.1") is True
@@ -88,7 +88,7 @@ import re
 
 def better_ip_validator(ip_address):
     # Replace ... with valid RegEx
-    m = re.search(r"192\.168\.1\.[0-255]{1}", ip_address)
+    m = re.match(r"192\.168\.1\.[0-255]{1}", ip_address)
     return m is not None
 
 assert better_ip_validator("192.168.1.255") is True     # cool, this works
@@ -194,7 +194,7 @@ import re
 
 def bad_email_validator(email):
     # Replace ... with valid RegEx
-    m = re.search(r"...", email)
+    m = re.match(r"...", email)
     return m is not None
 
 assert bad_email_validator("peter@gmail.com") is True # valid

@@ -56,7 +56,7 @@ DEBUG = False
 
 def valid_filename(filename):
     # insert regex here
-    m = re.search(r"...", filename)
+    m = re.match(r"...", filename)
 
     if DEBUG:
         if m: 
@@ -99,14 +99,14 @@ DEBUG = False
 
 def is_integer(string):
     # Replace ... with regex
-    match = re.search(r"...", string)
+    m = re.match(r"...", string)
 
     if DEBUG:
         if m: 
             print("The actual match is:", m.group())
         else: 
             print("The actual match is: None")
-    return match is not None
+    return m is not None
 
 assert is_integer("42") is True
 assert is_integer("-5000") is True

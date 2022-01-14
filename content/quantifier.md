@@ -71,7 +71,7 @@ pattern = r"192\.168\.0\...?.?"
 
 # iterate of our log_content and print the row if pattern matches
 for row in log_content:
-    if re.search(pattern, row):
+    if re.match(pattern, row):
         print("Error detected:", row)
 ```
 
@@ -80,12 +80,12 @@ In the example above we could extract the IP adresses also manually. Our test co
 Look at the next example and try to predict if the following patterns will match the IP addresses. Write your expected result down and try them out afterwards in an interactive session and compare with your expected results.
 
 ```python
-print("Example 1", re.search(r"192\.168\.1\..?", "192.168.1.7"))      # Match or no match?
-print("Example 2", re.search(r"192\.168\.1\..?", "192.168.1.10"))     # Match or no match?
-print("Example 3", re.search(r"172\.148\.1\...4", "172.148.1.4"))     # Match or no match?
-print("Example 4", re.search(r"172\.148\.1\..?.?4", "172.148.1.4"))   # Match or no match?
-print("Example 5", re.search(r"172\.148\.1\..?.?4", "172.148.1.14"))   # Match or no match?
-print("Example 6", re.search(r"172\.148\.1\..?.?4", "172.148.1.104")) # Match or no match?
+print("Example 1", re.match(r"192\.168\.1\..?", "192.168.1.7"))      # Match or no match?
+print("Example 2", re.match(r"192\.168\.1\..?", "192.168.1.10"))     # Match or no match?
+print("Example 3", re.match(r"172\.148\.1\...4", "172.148.1.4"))     # Match or no match?
+print("Example 4", re.match(r"172\.148\.1\..?.?4", "172.148.1.4"))   # Match or no match?
+print("Example 5", re.match(r"172\.148\.1\..?.?4", "172.148.1.14"))  # Match or no match?
+print("Example 6", re.match(r"172\.148\.1\..?.?4", "172.148.1.104")) # Match or no match?
 ```
 
 How many guesses did you have correct? Wether you have all correct or none, the important factor is you tried. You must commit mental effort to learn, so stay motivated :)
@@ -102,10 +102,10 @@ The `*` quantifier specifies that a character may have any number of hits. Any n
 ```python
 # * matches 0..x
 
-print(1, re.search(r"192.168.*", "192.168.1.42"))          # match
-print(2, re.search(r"192.168.1.10.*", "192.168.1.10"))     # match
-print(3, re.search(r"192.168.1.10.*", "192.168.1.100"))    # match
-print(4, re.search(r"192.168.1..*", "192.168.1.xxx"))      # match
+print(1, re.match(r"192.168.*", "192.168.1.42"))          # match
+print(2, re.match(r"192.168.1.10.*", "192.168.1.10"))     # match
+print(3, re.match(r"192.168.1.10.*", "192.168.1.100"))    # match
+print(4, re.match(r"192.168.1..*", "192.168.1.xxx"))      # match
 ```
 
 The `*` quantifier is **greedy**. This means it tries to match as many characters as possible.  We have a look at an example to describe what this means exactly.
@@ -202,7 +202,7 @@ import re
 
 def valid_filename(filename):
     # Replace ... with valid RegEx
-    m = re.search(r"...", filename)
+    m = re.match(r"...", filename)
     return m is not None
 
 assert valid_filename("test.txt") is True
@@ -229,7 +229,7 @@ import re
 
 def bad_email_validator(email):
     # Replace ... with valid RegEx
-    m = re.search(r"...", email)
+    m = re.match(r"...", email)
     return m is not None
 
 assert bad_email_validator("peter@gmail.com") is True       # valid
@@ -264,9 +264,9 @@ Our IP address validation will currently match any last 3 characters. So it will
 # match 1-3 arbitrary characters
 
 regex = r"192\.168\.1\..{1,3}"
-print("Matches 1-3", re.search(regex, "192.168.1.7xx"))
-print("Matches 1-3", re.search(regex, "192.168.1.17x"))
-print("Matches 1-3", re.search(regex, "192.168.1.xxx"))
+print("Matches 1-3", re.match(regex, "192.168.1.7xx"))
+print("Matches 1-3", re.match(regex, "192.168.1.17x"))
+print("Matches 1-3", re.match(regex, "192.168.1.xxx"))
 ```
 
 This is definitly not what we want. Can we fix this? Sure, we can! We will see how in the next chapter :)
@@ -281,7 +281,7 @@ Match IP address starting with `192.168.1.`
 # match 1-3 arbitrary characters
 
 regex = r"192\.168\.1\..{1,3}"
-print("Matches 1-3", re.search(regex, "192.168.1.7"))
-print("Matches 1-3", re.search(regex, "192.168.1.17"))
-print("Matches 1-3", re.search(regex, "192.168.1.117"))
+print("Matches 1-3", re.match(regex, "192.168.1.7"))
+print("Matches 1-3", re.match(regex, "192.168.1.17"))
+print("Matches 1-3", re.match(regex, "192.168.1.117"))
 ```
