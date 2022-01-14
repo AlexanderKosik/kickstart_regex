@@ -2,7 +2,7 @@
 
 # Groups
 
-So far we have printed the whole match object most of the time. What if we only want to print or process the actual match or just a part of the match?
+So far we have printed the whole match object most of the time. What if we only want to print or process the actual match or just a specific part of the match?
 
 This is where groups come into play. 
 
