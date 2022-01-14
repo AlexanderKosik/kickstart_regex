@@ -63,27 +63,6 @@ So we substitute our match with the content of the first capturing group (the fi
 
 That gives us a lot more possibilities and we will practice this soon. Before that just a word about non-capturing groups.
 
-
-# Exercise
-
-We want to practice the substitute feature. In this exercise we want to fix the occurences like this:
-
-```python
-import re
-
-def fix_string(string):
-    # replace pattern and replace here
-    return re.sub(r"...", r"...", string)
-
-assert fix_string("This is Tunas pencil") == "This is Tuna's pencil"
-assert fix_string("This is Tunas laptop") == "This is Tuna's laptop"
-assert fix_string("Tunas laptop is broken") == "Tuna's laptop is broken"
-assert fix_string("My name is Tuna") == "My name is Tuna"
-assert fix_string("Tuna, what's wrong with you?!") == "Tuna, what's wrong with you?!"
-print("Good RegEx")
-```
-
-
 ## Non-capturing groups
 Groups are capturing by default, this means every group we create can be referenced.
 
@@ -161,10 +140,58 @@ print("Good RegEx")
 'src="images/test.jpg"'
 ```
 
+# Extended Exercise
+
+We add one level of difficulty. What if we do not only have images in the directory level of html files but also in some deeper nested directories? We want every file to be in the `images/` directory. 
+
+So can you solve the problem with a file list like this?
+
+```python
+import re
+
+lines = [
+    'src="pic.png"',
+    'src="python.png"',
+    'src="python.jpeg"',
+    'src="overview.jpeg"',
+    'src="nature.jpeg"',
+    'src="test/nested/house.jpeg"',
+    'src="sub_1/sub_2/lamp.jpeg"',
+    'src="sub/xyz.jpeg"',
+    'src="images/idx.jpeg"',
+    'src="images/test.jpg"',
+]
+
+fixed = []
+for line in lines:
+    # replace search and replace here
+    fix = re.sub(r'...', r'...', line)
+
+    # uncomment this line if debugging
+    # print(fix)
+    fixed.append(fix)
+
+assert fixed[0] == 'src="images/pic.png"'
+assert fixed[1] == 'src="images/python.png"'
+assert fixed[2] == 'src="images/python.jpeg"'
+assert fixed[3] == 'src="images/overview.jpeg"'
+assert fixed[4] == 'src="images/nature.jpeg"'
+assert fixed[5] == 'src="images/house.jpeg"'
+assert fixed[6] == 'src="images/lamp.jpeg"'
+assert fixed[7] == 'src="images/xyz.jpeg"'
+assert fixed[8] == 'src="images/idx.jpeg"'
+assert fixed[9] == 'src="images/test.jpg"'
+print("Good RegEx")
+```
+
+If you solved this exercise on your own, you are already an RegEx Expert. Congratulations :)
+
+If not, don't be too hard on yourself. Have a look at the solution and try to understand it. If you got it, try to solve it out of memory again and try it again in one week. I am sure, after several weeks of repetition you will be able to solve it for yourself. Remember: **practice makes perfect** :)
+
 # The End
 
 This is the end of our RegEx journey. I hope you had some fun learning RegEx. You are now prepared to solve real world problems with the power of RegEx. 
 
 ![maya](ressources/maya.png "Maya")
 
-[Overview](./overview.md) | [Back (Lookaround)](./lookaround.md) 
+[Overview](./overview.md) | [Back (Lookaround)](./lookaround.md) |[Solutions] (./solutions.md)
