@@ -63,6 +63,27 @@ So we substitute our match with the content of the first capturing group (the fi
 
 That gives us a lot more possibilities and we will practice this soon. Before that just a word about non-capturing groups.
 
+
+# Exercise
+
+We want to practice the substitute feature. In this exercise we want to fix the occurences like this:
+
+```python
+import re
+
+def fix_string(string):
+    # replace pattern and replace here
+    return re.sub(r"...", r"...", string)
+
+assert fix_string("This is Tunas pencil") == "This is Tuna's pencil"
+assert fix_string("This is Tunas laptop") == "This is Tuna's laptop"
+assert fix_string("Tunas laptop is broken") == "Tuna's laptop is broken"
+assert fix_string("My name is Tuna") == "My name is Tuna"
+assert fix_string("Tuna, what's wrong with you?!") == "Tuna, what's wrong with you?!"
+print("Good RegEx")
+```
+
+
 ## Non-capturing groups
 Groups are capturing by default, this means every group we create can be referenced.
 
@@ -107,6 +128,7 @@ lines = [
     'src="pic.png"',
     'src="python.png"',
     'src="python.jpeg"',
+    'src="overview.jpeg"',
     'src="images/idx.jpeg"',
     'src="images/test.jpg"',
 ]
@@ -114,16 +136,32 @@ lines = [
 fixed = []
 for line in lines:
     # replace search and replace here
-    fix = re.sub(r'...', '...', line)
+    fix = re.sub(r'...', r'...', line)
+
+    # uncomment this line if debugging
+    # print(fix)
     fixed.append(fix)
 
 assert fixed[0] == 'src="images/pic.png"'
 assert fixed[1] == 'src="images/python.png"'
 assert fixed[2] == 'src="images/python.jpeg"'
-assert fixed[3] == 'src="images/idx.jpeg"'
-assert fixed[4] == 'src="images/test.jpg"'
+assert fixed[3] == 'src="images/overview.jpeg"'
+assert fixed[4] == 'src="images/idx.jpeg"'
+assert fixed[5] == 'src="images/test.jpg"'
 print("Good RegEx")
 ```
+
+*Hint*: If you are using RegEx101 to "debug" your RegEx creation, use this as test string:
+
+```
+'src="pic.png"'
+'src="python.png"'
+'src="python.jpeg"'
+'src="images/idx.jpeg"'
+'src="images/test.jpg"'
+```
+
+# The End
 
 This is the end of our RegEx journey. I hope you had some fun learning RegEx. You are now prepared to solve real world problems with the power of RegEx. 
 
