@@ -176,6 +176,107 @@ assert valid_hour("23:60") is False
 print("Good RegEx")
 ```
 
+Could you solve the exercise? If yes, congratulations! This was no easy task at all!
+
+### *Hints*
+This exercise is not easy. Try to separate to problem into smaller sub-problems.
+
+For that try to solve the "minute-problem" first. 
+
+If you get stuck, use RegEx101 and use this test string for the minute problem. Can you find a pattern? 
+
+```
+:00
+:01
+:02
+:03
+:04
+:05
+:06
+:07
+:08
+:09
+
+:10
+:11
+:12
+:13
+:14
+:15
+:16
+:17
+:18
+:19
+
+:20
+:21
+:22
+:23
+:29
+
+:30
+:39
+
+:40
+:49
+
+:50
+:59
+```
+Note: Not every minute is posted in the test data... several minutes were skipped when starting with a `2` and only 2 minutes were posted when starting with 4 or 5. Feel free to extend the test data if the pattern is not clear to you.
+
+### More hints
+
+If the pattern did not emerge, have a look at the last number. It does not matter what number we have here, everything is valid. So we can use `\d`. 
+
+In the first number only 0 to 5 is valid, so we can use `[0-5]`. 
+
+We can combine these two and use: `[0-5]\d`.
+
+### More hints
+If you have solved the "minute problem", continue with the hour problem separated. 
+
+If you RegEx101, use this test string:
+```
+00:
+01:
+02:
+03:
+04:
+05:
+06:
+07:
+08:
+09:
+
+10:
+11:
+12:
+13:
+14:
+15:
+16:
+17:
+18:
+19:
+
+20:
+21:
+22:
+23:
+```
+
+Try to find a pattern.
+
+### More hints
+
+If we look at the last pattern we see, that if we have a `0` or a `1` as a first digit, every second digit is valid: `[01]\d`
+
+If we have a `2` as first digit, only `[0-3]` is valid as the second digit. 
+
+--- 
 There is another use case for groups, the so called look around groups. We will have a look at them in the next chapter. 
+
+
 
 [Overview](./overview.md) | [Back (Anchors)](./anchors.md) | [Next (Lookaround)](./lookaround.md) 
