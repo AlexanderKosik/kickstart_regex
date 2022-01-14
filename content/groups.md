@@ -135,7 +135,7 @@ invalid = "+490179/123456789"
 
 def is_valid(number):
     # Replace ... with valid RegEx
-    return bool(re.search(r"...", number))
+    return bool(re.match(r"...", number))
 
 assert is_valid(valid_1) == True, "Check valid number with +49"
 assert is_valid(valid_2) == True, "Check valid number with 0179"
@@ -150,7 +150,7 @@ Have a look at this example which makes use of group alternation and referencing
 number = "0179/123456789"
 number_2 = "+49179/123456789"
 
-m = re.search(r"^(\+\d{5}|\d{4})/(\d{9})$", number_2)
+m = re.match(r"(\+\d{5}|\d{4})/(\d{9})$", number_2)
 print("Complete number:", m.group())
 print("First part:", m.group(1))
 print("Second part:", m.group(2))
@@ -165,7 +165,7 @@ We want to write a RegEx which will verify valid times.
 ```python
 def valid_hour(string):
     # insert regex here
-    return re.search(r"...", string) is not None
+    return re.match(r"...", string) is not None
 
 assert valid_hour("00:00") is True
 assert valid_hour("23:59") is True
