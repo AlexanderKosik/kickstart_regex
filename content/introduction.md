@@ -2,23 +2,29 @@
 
 # Introduction
 
-No introduction to Regular Expressions without the famous words of Jamie Zawinski.
+No introduction to Regular Expressions without the famous words of Jamie Zawinski. 
 
 ![Introduction](ressources/re2.png "Introduction")
 
-Regular Expressions are a powerful tool which should be in every developers toolkit. But be aware, that they are not the solution to every problem.
+Are these words the truth? Maybe. Maybe it is true when the foundations have not been properly laid. If you had no chance to learn Regular Expressions with enough time. With a good enough instruction. 
+
+This course exists to fill this gap. You can descide for your own what you think about this quotations at the end of this course. :)
+
+So what are Regular Expressions?
+
+Regular Expressions are a powerful tool which should be in every developers toolkit. But be aware, that they are not the solution to **every** problem.
 
 But what are Regular Expressions (or short: *RegEx*) good for?
 
-**It is all about data**. RegEx offer us a way to control and master data. For example by an automatic extraction of specific rows from a very large file. Or by validating data that comes from a foreign source, for example from a user input.
+**It is all about data**. RegEx offer us a way to control and master data. For example by an automatic extraction of specific rows from a very large file. Or by validating data that comes from a foreign source, for example from an user input.
 
 So in most cases Regular Expressions are used for matching a string within another bigger string or file:
 
-    - We check, if a string is contained in a string (so if it is a substring)
+    - We check, if a string is contained in another string (check if it is a substring)
     - We extract information out of a string or file
     - We replace content if it matches certain criteria
 
-Regular Expressions apear in a wide variety of domains. It is very often used in the context of unix operating systems where we have specific tools like *grep*, *sed* and *awk*, all of those support RegEx.
+Regular Expressions appear in a wide variety of domains. It is very often used in the context of unix operating systems where we have specific tools like *grep*, *sed* and *awk*, all of those support RegEx.
 
 The programming language *Perl* is predestined for RegEx. But also languages like C++ (since C++11) or Java support Regular Expressions.
 
@@ -65,7 +71,7 @@ assert has_vowel("zzz") is False
 assert has_vowel("pffff") is False
 ```
 
-Even more complex checks are possible without the use of RegEx. A solution might look like this.
+Even more complex checks are possible without the use of RegEx. A solution to the problem above might look like this:
 
 ```python
 # Check if we have a vowel in the passed string
@@ -89,9 +95,17 @@ The point is that in most cases we are good to go when we use what's available i
 
 But there are also cases were we reach the limit of what is possible with builting methods. Here are some examples. What if:
 
-- We want to match an arbitrary character
-- We want to have `0..x` matches of a specific character or word
-- We want to specifiy the position of the match. E.g. at the beginning of the row, end of the row, or word boundary
+- **We want to match arbitrary characters**
+  
+  So we search for `Subject: ... 5 digit number ...` and a 5 digit number (e.g. a zip code), without knowing the exact number
+
+- **We want to have `0..x` matches of a specific character or word**
+
+  We want to find duplicated words like `the the` in a very long text
+
+- **We want to specifiy the position of the match**
+
+  E.g. we want to match a word boundary
 
 Then ... well ... we need to:
 
