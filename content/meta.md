@@ -19,7 +19,7 @@ help(re.search)
 #    a Match object, or None if no match was found.
 ```
 
-The function `re.search` takes a pattern as the first parameter. This pattern is searched in the passed string (2nd parameter). The 3rd paramter (`flags`) can be ignored at the moment.
+The function `re.search` takes a **pattern** as the first parameter. This pattern is searched in the passed string (2nd parameter). The 3rd paramter (`flags`) can be ignored at the moment.
 
 We use a similar example as before by searching a string literal (a string literal is a fixed string like `"Fatal error"`) in another string.
 
@@ -102,17 +102,17 @@ Let's have a closer look on the usage and what it will match:
 
 ```python
 import re
-print(re.search(r"gr.y", "grey"))   # <re.Match object; span=(0, 4), match='grey'>
-print(re.search(r"gr.y", "gray"))   # <re.Match object; span=(0, 4), match='gray'>
-print(re.search(r"gr.y", "gr7y"))   # <re.Match object; span=(0, 4), match='gr7y'>
-print(re.search(r"gr.y", "great"))  # None
-print(re.search(r"gr.y", "gr.y"))   # <re.Match object; span=(0, 4), match='gr.y'>
-print(re.search(r"gr.y", "gr!y"))   # <re.Match object; span=(0, 4), match='gr!y'>
+print(re.match(r"gr.y", "grey"))   # <re.Match object; span=(0, 4), match='grey'>
+print(re.match(r"gr.y", "gray"))   # <re.Match object; span=(0, 4), match='gray'>
+print(re.match(r"gr.y", "gr7y"))   # <re.Match object; span=(0, 4), match='gr7y'>
+print(re.match(r"gr.y", "great"))  # None
+print(re.match(r"gr.y", "gr.y"))   # <re.Match object; span=(0, 4), match='gr.y'>
+print(re.match(r"gr.y", "gr!y"))   # <re.Match object; span=(0, 4), match='gr!y'>
 ```
 
 In this example the meta character `.` will match on `e a 7 . !`.
 
-Let's have a detailed description of how the RegEx will work internally if we use the search pattern `"gr.y"` on the target string `"grey"`.
+Let's have a detailed description of how the RegEx will work internally if we use the pattern `"gr.y"` on the target string `"grey"`.
 
 - Is the first character of the target string a `g`? Yes, so we proceed.
 - Is the second character of the target string a `r`? Yes, so we proceed.
@@ -130,9 +130,9 @@ What if we want to match multiple arbitrary characters? Can we repeat the `.` ch
 
 ```python
 import re
-print(re.search(r"gr..", "grey"))       # <re.Match object; span=(0, 4), match='grey'>
-print(re.search(r"gr..", "grad"))       # <re.Match object; span=(0, 4), match='grad'>
-print(re.search(r"gr..", "gr:43"))      # <re.Match object; span=(0, 4), match='gr:4'>
+print(re.match(r"gr..", "grey"))       # <re.Match object; span=(0, 4), match='grey'>
+print(re.match(r"gr..", "grad"))       # <re.Match object; span=(0, 4), match='grad'>
+print(re.match(r"gr..", "gr:43"))      # <re.Match object; span=(0, 4), match='gr:4'>
 
 # "gr" followd by 4(!) any characters
 print(re.search(r"gr....", "great"))    # None
@@ -184,7 +184,7 @@ assert simple_validator("test00100.tx") is False
 print("Good RegEx!")
 ```
 
-*Using `re.match`: We use the `match` function in most of the validation exercises. Compared to the `search` function `match` tries to apply the pattern at the start of the string and this is exactly what we want in most cases.*
+*Using `re.match`: We use the `match` function in most of the validation exercises. Compared to the `search` function `match` tries to apply the pattern at the start of the string and this is exactly what we want in most cases. Search will go through the string character by character and tries to match starting from the current character.*
 
 Ok, that was cool! But the solution may look a little bit odd (there are a lot of dots in it, isn't it)?
 
