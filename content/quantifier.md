@@ -81,16 +81,17 @@ Look at the next example and try to predict if the following patterns will match
 
 ```python
 print("Example 1", re.match(r"192\.168\.1\..?", "192.168.1.7"))      # Match or no match?
-print("Example 2", re.match(r"192\.168\.1\..?", "192.168.1.10"))     # Match or no match?
-print("Example 3", re.match(r"172\.148\.1\...4", "172.148.1.4"))     # Match or no match?
-print("Example 4", re.match(r"172\.148\.1\..?.?4", "172.148.1.4"))   # Match or no match?
-print("Example 5", re.match(r"172\.148\.1\..?.?4", "172.148.1.14"))  # Match or no match?
-print("Example 6", re.match(r"172\.148\.1\..?.?4", "172.148.1.104")) # Match or no match?
+print("Example 2", re.match(r"172\.148\.1\...4", "172.148.1.4"))     # Match or no match?
+print("Example 3", re.match(r"172\.148\.1\..?.?4", "172.148.1.4"))   # Match or no match?
+print("Example 4", re.match(r"172\.148\.1\..?.?4", "172.148.1.14"))  # Match or no match?
+print("Example 5", re.match(r"172\.148\.1\..?.?4", "172.148.1.104")) # Match or no match?
+
+print("Hard Example", re.match(r"192\.168\.1\..?", "192.168.1.10"))     # Match or no match?
 ```
 
 How many guesses did you have correct? Wether you have all correct or none, the important factor is you tried. You must commit mental effort to learn, so stay motivated :)
 
-If you have tried the examples in an interactive prompt you will see, that the second RegEx will match. This is actually a very dangerous RegEx and in most cases an invalid match.
+If you have tried the examples in an interactive prompt you will see, that the last RegEx will match. This is actually a very dangerous RegEx and in most cases an invalid match.
 
 First of all it will also match an invalid IP address like `192.168.1.` which itself is kind of odd. But it also prints us a "wrong" match by only printing `192.168.1.1` which may not be the IP address we are looking for.
 
@@ -153,7 +154,7 @@ The `*` quantifier wants to match **as much as possible** (as said - it's greedy
 
 So be very careful if find yourself using a `.*` within a RegEx. In most cases the behaviour is not what you want!
 
-We will see in later chapters how to change the greedyness of the `*` quantifier.
+*Pro tip: We can change the greedyness of the `*` quantifier by using `*?`. But that is more of an advanced feature.*
 
 ## `+` quantifier
 The `+` quantifier specifies that an character may have one to any number of hits. So we must have **at least** 1 hit.
