@@ -56,7 +56,7 @@ DEBUG = False
 
 def valid_filename(filename):
     # insert regex here
-    m = re.match(r"...", filename)
+    m = re.search(r'...', filename)
 
     if DEBUG:
         if m: 
@@ -77,6 +77,8 @@ assert valid_filename("te*st.txt") is False
 assert valid_filename("test.t?t") is False
 print("Good RegEx")
 ```
+
+*Attention: The example above uses search, so you are forced to use anchors*
 
 ## Exercise "is integer"
 
@@ -99,7 +101,7 @@ DEBUG = False
 
 def is_integer(string):
     # Replace ... with regex
-    m = re.match(r"...", string)
+    m = re.search(r"...", string)
 
     if DEBUG:
         if m: 
@@ -117,6 +119,7 @@ assert is_integer("+999") is False
 assert is_integer("--500") is False
 print("Good RegEx")
 ```
+*Attention: The example above uses search, so you are forced to use anchors*
 
 We finish this chapter with a little smile.
 
