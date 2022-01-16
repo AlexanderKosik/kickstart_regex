@@ -274,6 +274,33 @@ If we look at the last pattern we see, that if we have a `0` or a `1` as a first
 
 If we have a `2` as first digit, only `[0-3]` is valid as the second digit. 
 
+# Exercise Valid IP address revisited
+We now want to have only valid ip adresses from a range between 0 and 255.
+
+```python
+import re
+
+def better_ip_validator(ip_address):
+    # Replace ... with valid RegEx
+    m = re.match(r"...", ip_address)
+    return m is not None
+
+assert better_ip_validator("192.168.1.1") is True
+assert better_ip_validator("192.168.1.11") is True
+assert better_ip_validator("192.168.1.111") is True
+assert better_ip_validator("192.168.1.255") is True
+assert better_ip_validator("192.168.1.256") is False
+assert better_ip_validator("192.168.1.999") is False
+assert better_ip_validator("192.168.1.x") is False
+assert better_ip_validator("192.168.1.xx") is False
+assert better_ip_validator("192.168.1.xxx") is False
+print("Good RegEx!")
+```
+
+This was a hard one! Nice done if you got it!
+
+But don't be frustrated if not. It is really not easy at all and needs patience ;)
+
 --- 
 There is another use case for groups, the so called look around groups. We will have a look at them in the next chapter. 
 
