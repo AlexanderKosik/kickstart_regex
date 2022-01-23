@@ -75,6 +75,7 @@ assert valid_filename("test.text") is False
 assert valid_filename("te:st.txt") is False
 assert valid_filename("te*st.txt") is False
 assert valid_filename("test.t?t") is False
+assert valid_filename("my-test-file.txt") is True
 print("Good RegEx")
 ```
 
