@@ -209,8 +209,6 @@ In the next chapter we can solve our problem with the hex validator and 5 hex va
 
 [Overview](./overview.md) | [Back (Quantifier)](./quantifier.md) | [Next (Anchors)](./anchors.md)
 
-#
-
 ## Solutions
 
 The character class `[0-255]` will actually be the same as this: `[01255]`. So it will match 0 or 1 or 2 or 5. The redundant 5 is ignored in this case. 
