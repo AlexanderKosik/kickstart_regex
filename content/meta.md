@@ -19,9 +19,9 @@ help(re.search)
 #    a Match object, or None if no match was found.
 ```
 
-The function `re.search` takes a **pattern** as the first parameter. This pattern is searched in the passed string (2nd parameter). The 3rd paramter (`flags`) can be ignored at the moment.
+The function `re.search` takes a **pattern** as the first parameter. This pattern is searched for in the string which we pass as the 2nd parameter. The 3rd parameter (`flags`) can be ignored at the moment.
 
-We use a similar example as before by searching a string literal (a string literal is a fixed string like `"Fatal error"`) in another string.
+We use a similar example as before by searching a string literal within another string. A string literal is a fixed string, such as `"Fatal error"`.
 
 ```python
 import re
@@ -34,33 +34,33 @@ m = re.search(r"error", "Random error message just to annoy you.")
 print(m)    # <re.Match object; span=(7, 12), match='error'>
 ```
 
-In these two examples we used the `re.search` method to search for a string within a string. That is nothing fancy, we did more or less the same by using the `in` operator in the example from the introduction. The only new thing is the usage of the Regular Expression module in Python.
+In these two examples we used the `re.search` method to search for a string within a string. That is nothing fancy, we can achieve the same result by using the `in` operator in the example from the introduction. The only new thing is the usage of the Regular Expression module in Python.
 
-Python has a special string prefix to create a `raw string`. Since these `raw strings` are very useful in the context of RegEx we will take a closer look at them in brief.
+Python has a special string prefix to create a `raw string`. Since these `raw strings` are very useful in the context of RegEx, we will take a brief look at them.
 
-## Using Pythons string prefix "`r`"
+## Using Python's string prefix "`r`"
 When using the Python Programming language we have several special string prefixes available. By using the string prefix `r` we create a `raw string`.
 
 By using this raw strings escaped characters like `\n` (New line) will not be interpreted. Let's look at an example and see raw strings in action.
 
 ```python
 # We print a `normal string`.
-# \n is an 'escaped char' and every occurence will result in a new line
-print("Dear Sir or Madamme\n\nI like to inform you about a fire in the basement!\n")
+# \n is an 'escaped char' and every occurrence will result in a new line
+print("Dear Sir or Madam\n\nI'd like to inform you about a fire in the basement!\n")
 
 # We now create a raw string by using the string prefix 'r'
 # \n will not be interpreted
 # So everything is in a one line with literal \n
-print(r"Dear Sir or Madamme\n\nI like to inform you about a fire in the basement!")
+print(r"Dear Sir or Madam\n\nI'd like to inform you about a fire in the basement!")
 ```
 
-When using Regular Expressions we want in nearly all cases that `escaped characters` are not interpreted.
+In nearly all cases of using Regular Expressions, we do not want `escaped characters` to be interpreted.
 
-So the general rule of thumb is: Use raw strings whenever you use RegEx. This will save a lot of trouble.
+So the general rule of thumb is: use raw strings whenever you use RegEx. This will save a lot of trouble.
 
 ## Another RegEx Example
 
-After this short outline about raw strings back to the original topic: the use of the `re module`.
+After this short outline about raw strings, let's move back to the original topic of using the `re module`.
 
 The `re.search` method returns a `Match object` if the RegEx string is found in the passed string. If nothing is found, `re.search` returns None.
 
@@ -72,7 +72,7 @@ m = re.search(r"100€", "The price is $100")
 print(m)    # None
 ```
 
-Still we can implement this example quite easily without RegEx. For example like this:
+Still, we can implement this example quite easily without RegEx. For example like this:
 
 ```python
 # Without using RegEx
@@ -82,7 +82,7 @@ b_dollar = r"100€" in "The price is $100"
 print(b_euro, b_dollar)
 ```
 
-So what's the matter with RegEx?!
+So what's the use of RegEx?!
 
 ## The Power of Meta Characters
 Most characters match exactly on itself. The pattern `r"100€"` from the previous examples will match exactly on the string literal `100€`, `r"test"` will match exactly on the string literal `test`.
@@ -95,7 +95,7 @@ A RegEx may contain the following `meta characters`:
 
 We start by having a closer look on the meta character `.` (dot).
 
-### Meta Characeter . (dot)
+### Meta Character . (dot)
 The meta character `.` matches any character. It does not matter if it is a letter, a number or a special character like `!`. The dot will match.
 
 Let's have a closer look on the usage and what it will match:
@@ -137,7 +137,7 @@ print(re.match(r"gr..", "gr:43"))      # <re.Match object; span=(0, 4), match='g
 # "gr" followd by 4(!) any characters
 print(re.search(r"gr....", "great"))    # None
 ```
-So repeating the meta character will match multiple "any characters".
+So repeating the meta character will match multiple of "any characters".
 
 *Attention: As you see in the last example, matching 6 characters in total will not match on a string of length 5. The last 4 characters are arbitrary but not optional!*
 
@@ -153,7 +153,7 @@ s_2 = "This line does not end with a dot"
 print(re.search(r"\.", s_2))    # None
 ```
 
-So the meta character `.` is kind of cool and with this simple extension we can do much more than with "normal string methods".
+So the meta character `.` is very versatile and with this simple extension we can do much more than with "normal string methods".
 
 # Exercise
 
@@ -186,8 +186,8 @@ print("Good RegEx!")
 
 *Using `re.match`: We use the `match` function in most of the validation exercises. Compared to the `search` function `match` tries to apply the pattern at the start of the string and this is exactly what we want in most cases. Search will go through the string character by character and tries to match starting from the current character.*
 
-Ok, that was cool! But the solution may look a little bit odd (there are a lot of dots in it, isn't it)?
+Ok, that was cool! But the solution may look a little bit odd (there are a lot of dots in it, aren't there)?
 
-So how can we do better? And what if we don't know the exact amount of characters? This is where the next chapter comes into play ... So stay tuned!
+So how can we do better? And what if we don't know the exact number of characters? This is where the next chapter comes into play ... so stay tuned!
 
 [Overview](./overview.md) | [Back (Introduction)](./introduction.md) | [Next (Quantifier)](./quantifier.md)
