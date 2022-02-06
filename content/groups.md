@@ -183,7 +183,7 @@ This exercise is not easy. Try to separate to problem into smaller sub-problems.
 
 For that try to solve the "minute-problem" first. 
 
-If you get stuck, use RegEx101 and use this test string for the minute problem. Can you find a pattern? 
+If you get stuck, use [RegEx101](https://regex101.com) and use this test string for the minute problem. Can you find a pattern? 
 
 ```
 :00
@@ -229,12 +229,14 @@ Note: Not every minute is posted in the test data... several minutes were skippe
 
 If the pattern did not emerge, have a look at the last number. It does not matter what number we have here, everything is valid. So we can use `\d`. 
 
-In the first number only 0 to 5 is valid, so we can use `[0-5]`. 
+For the first number only 0 to 5 is valid, so we can use `[0-5]`. 
 
 We can combine these two and use: `[0-5]\d`.
 
+With this knowledge, try to solve the "hour problem". 
+
 ### More hints
-If you have solved the "minute problem", continue with the hour problem separated. 
+If you get stuck try to solve the hour problem isolated first. 
 
 If you RegEx101, use this test string:
 ```
@@ -266,7 +268,7 @@ If you RegEx101, use this test string:
 23:
 ```
 
-Try to find a pattern.
+Try to find a pattern. :)
 
 ### More hints
 
