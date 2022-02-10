@@ -1,18 +1,18 @@
-[Overview](./overview.md) | [Back (Lookaround)](./lookaround.md) 
+[Overview](./overview.md) | [Back (Lookaround)](./lookaround.md)
 
 # Substitution
 
-So far we have used RegEx to validate if certain strings match defined criteria. But we can use RegEx also in a way to substitute certain matches with something else. 
+So far we have used RegEx to validate if certain strings match defined criteria. But we can also use RegEx in a way to substitute certain matches with something else.
 
-This is very useful so we get practical an have a look at an example.
+This is very useful, so let's get practical and have a look at an example.
 
 ## Example
 
-Let's say we have converted a lot of images from the jpg-format to a png-format. If the images are used in a HTML homepage they are referenced in our source code with the old filename. 
+Let's say we have converted a lot of images from a jpg-format to a png-format. If the images are used in an HTML homepage, they are referenced in our source code with the old filename.
 
-To avoid manual tedious work to replace every filename by hand we want the fileending to be programatically changed. 
+To avoid manual tedious work to replace every filename by hand, we want the file extension to be programatically changed.
 
-We could use the `str.replace` method for that in python.
+We could use the `str.replace` method for that in Python.
 
 ```python
 filenames_jpg = [
@@ -25,7 +25,7 @@ filenames_png = [s.replace("jpg", "png") for s in filenames_jpg]
 print(filenames_png)
 
 ```
-But what if we have not only converted files with the ending `jpg` but also files with ending `jpeg` and `bmp` got converted to `png`?
+What if we do not only want to convert files with the extension `jpg`, but also files with the extension `jpeg` and `bmp`?
 
 Things get ugly if we keep on repeating the `str.replace` method with different endings, so there must be a better way!
 
@@ -39,7 +39,7 @@ filenames_mixed = [
     "home.jpg",
     "index.jpg",
     "sell.png",
-    "passwort.bmp",
+    "password.bmp",
     "holiday.jpeg"
 ]
 
@@ -54,36 +54,36 @@ print(filenames_png)
 Let's examine the `re.sub` command.
 
 - First we created a capturing group matching any word character `(\w+)`
-- This got followed by a literal dot `\.`
+- This was followed by a literal dot `\.`
 - Followed by a group alternation for different file endings `(jpg|png|jpeg|bmp)`
 
-Now comes the interesting part. We referenced our first group in our replacement string by using `\1`. Every opening group can be referenced again by a group number starting from 1. 
+Now comes the interesting part. We referenced our first group in our replacement string by using `\1`. Every opening group can be referenced again by a group number starting from 1.
 
-So we substitute our match with the content of the first capturing group (the filename without ending), followed by a literal dot and the file ending png. 
+So we substitute our match with the content of the first capturing group (the filename without ending), followed by a literal dot and the file ending png.
 
 That gives us a lot more possibilities and we will practice this soon. Before that just a word about non-capturing groups.
 
 ## Non-capturing groups
 Groups are capturing by default, this means every group we create can be referenced.
 
-If this behaviour is not desired we can specifiy a group as a non capturing group if we define the group like this: `(?:)`. These groups cannot be back-referenced any more. This feature is more like a documentational feature if we want to make clear, that this match will not be referenced or needed later on. 
+If this behaviour is not desired we can specify a group as a non-capturing group if we define the group like this: `(?:)`. These groups cannot be back-referenced any more. This feature is more like a documentational feature if we want to make clear that this match will not be referenced or needed later on.
 
 # Exercise
 
-We now combine the substituion command with features we learned several chapters ago in this real-world exercise. 
+We now combine the substitution command with features we learned several chapters ago in this real-world exercise.
 
-A html homepage consists typically of several html files and also some image files. In our example most of the html files are in the same directory as the image files. 
+An HTML homepage typically consists of several HTML files and also some image files. In our example, most of the HTML files are in the same directory as the image files.
 
-Within the html files the images get referenced like this:
+Within the HTML files the images get referenced like this:
 
 ```python
 html_string = '<img src="python.png" alt="Python Skill">'
 html_string += '<img src="images/cpp.png" alt="C++ Skill">'
 html_string += '<a href="index.html" class="brand-logo left"><img class="responsive-img" id="logo" src="pic.png"/></a>'
 ```
-As you see in the `src` attribute, some file paths to the png files are in the same directory level as the html file (no path is prepended, like `python.png`), other images are located in the `images` directory. This mixup is no good style. We fix this by moving every image file to an image directory, if not already there.
+As you see in the `src` attribute, some file paths to the png files are in the same directory level as the HTML file (no path is prepended, like `python.png`), other images are located in the `images` directory. This mixup is an example of poor file organisation. We should fix this by moving every image file to an image directory, if the image file is not already there.
 
-By moving the files on the harddisk we now have to change every image tag, too. What makes things even worse is, that some images already are in the image directory. Because our homepage has quite a lot of images it is not practical to change every `src-tag` by hand. And since we know RegEx we use our new super power :)
+By moving the files on the hard disk, we now have to change every image tag too. What makes things even worse is that some images are already in the image directory. Because our homepage has quite a lot of images it is not practical to change every `src-tag` by hand. And since we know RegEx we use our new super power :)
 
 So we want the content of the src-tag to be changed like this:
 
@@ -96,7 +96,7 @@ So we want the content of the src-tag to be changed like this:
 | src="images/test.jpg"   |  src="images/test.jpg"        | **no change**
 
 
-At this point our RegEx toolkit is well equiped so we can solve this problem in multiple ways. So there is no "single correct solution". 
+At this point, our RegEx toolkit is well equipped so we can solve this problem in multiple ways. Note that there is no "single correct solution".
 
 Try to find a solution for this real world scenario.
 
@@ -142,7 +142,7 @@ print("Good RegEx")
 
 # Extended Exercise
 
-We add one level of difficulty. What if we do not only have images in the directory level of html files but also in some deeper nested directories? We want every file to be in the `images/` directory. 
+Let's add an extra level of difficulty. What if we do not only have images in the directory level of HTML files but also in some deeper nested directories? We want every file to be in the `images/` directory. 
 
 So can you solve the problem with a file list like this?
 
@@ -190,7 +190,7 @@ If not, don't be too hard on yourself. Have a look at the solution and try to un
 
 # The End
 
-This is the end of our RegEx journey. I hope you had some fun learning RegEx. You are now prepared to solve real world problems with the power of RegEx. 
+This is the end of our RegEx journey. I hope you had some fun learning RegEx. You are now prepared to solve real world problems with the power of RegEx.
 
 ![maya](ressources/maya.png "Maya")
 

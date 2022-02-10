@@ -1,7 +1,7 @@
 
-There is no single one correct solution to the exercises. 
+There is no single one correct solution to the exercises.
 
-Solutions might differ regarding complexity, how generell they are and how easy they are to understand and to change. They will give you just an idea how you could solve the exercises if you get stuck.
+Solutions might differ regarding complexity, how general they are and how easy they are to understand and change. These solutions are just here to give you an idea about how to solve the exercises if you get stuck.
 
 # Meta
 ```python

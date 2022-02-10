@@ -1,4 +1,4 @@
-[Overview](./overview.md) | [Back (Introduction)](./introduction.md) | [Next (Quantifier)](./quantifier.md)
+[Overview](./overview.md) | [Back (Introduction)](./introduction.md) | [Next (Quantifiers)](./quantifier.md)
 
 # Meta Characters
 
@@ -190,4 +190,4 @@ Ok, that was cool! But the solution may look a little bit odd (there are a lot o
 
 So how can we do better? And what if we don't know the exact number of characters? This is where the next chapter comes into play ... so stay tuned!
 
-[Overview](./overview.md) | [Back (Introduction)](./introduction.md) | [Next (Quantifier)](./quantifier.md)
+[Overview](./overview.md) | [Back (Introduction)](./introduction.md) | [Next (Quantifiers)](./quantifier.md)
