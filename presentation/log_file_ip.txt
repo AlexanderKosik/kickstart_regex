@@ -1,0 +1,11 @@
+192.168.0.1      Error transmitting 3 Bytes
+192.168.0.10     Error transmitting 3 Bytes
+192.168.1.42     Error transmitting 2 Bytes
+192.168.1.52     Error transmitting 2 Bytes
+192.168.0.100    Error transmitting 8 Bytes
+172.148.1.1      Error transmitting 2 Bytes
+192.168.0.1      Error transmitting 1 Bytes
+178.148.1.1      Error transmitting 2 Bytes
+178.148.1.1      Error transmitting 1 Bytes
+178.148.1.2      Error transmitting 1 Bytes
+178.148.1.2      Error transmitting 6 Bytes
