@@ -1,10 +1,10 @@
-[Overview](./overview.md) | [Back (Anchors)](./anchors.md) | [Next (Lookaround)](./lookaround.md) 
+[Overview](./overview.md) | [Back (Anchors)](./anchors.md) | [Next (Lookaround)](./lookaround.md)
 
 # Groups
 
-So far we have printed the whole match object most of the time. What if we only want to print or process the actual match or just a specific part of the match?
+So far we have only been printing the whole match object. What if we only want to print or process the actual match or just a specific part of the match?
 
-This is where groups come into play. 
+This is where groups come into play.
 
 ```python
 import re
@@ -14,18 +14,18 @@ if match:
     print(match.group())    # will only print the match 07231
 ```
 
-In the above example we will only print the actual match by using `match.group()`. This requires a match object. If `re.search` finds no match it returns a `None` value. Calling a `group()` method on a None value will result in an exception. So checking if we get an actual match object is a good practice to avoid runtime errors. 
+In the above example we will only print the actual match by using `match.group()`. This requires a match object. If `re.search` finds no match it returns a `None` value. Calling a `group()` method on a None value will result in an exception. So checking if we get an actual match object is good practice to avoid runtime errors.
 
 Let's see how we can define groups in a RegEx and how to use them in multiple ways.
 
 ## Groups: Remember sub-matches
-We define groups in a RegEx with round brackets `( )`. Everything within this group will be captured and can be references later on. 
+We define groups in a RegEx with round brackets `( )`. Everything within this group will be captured and can be referenced later on.
 
-Let us illustrate this with an example.
+Let's illustrate this with an example.
 
-`files` is a list of filenames. We now want only PDF files beginning with a specific string like `invoice`. 
+`files` is a list of filenames. We now want only PDF files beginning with a specific string like `invoice`.
 
-Start by writing an RegEx that will match on files beginning with `invoice` and ending with `pdf`. 
+Start by writing a RegEx that will match on files beginning with `invoice` and ending with `pdf`.
 
 ```python
 import re
@@ -33,11 +33,11 @@ import re
 files = [
     "holiday1999.png",
     "invoice_car_insurance.pdf",
-    "invoice_telekom2021.pdf", 
-    "invoice_vattenfall2021.pdf", 
+    "invoice_telekom2021.pdf",
+    "invoice_vattenfall2021.pdf",
     "manual_mazda_cx5.pdf",
     "passport.jpg",
-    "resumee.pdf", 
+    "resumee.pdf",
 ]
 
 # place your regex here
@@ -52,9 +52,9 @@ print(filtered)
 print("Good RegEx")
 ```
 
-If your RegEx is correct you will see, that the list contains the 3 invoice files. What if we only want the actual filename, without the file ending `pdf`? We could filter our list afterwards and remove the filename, but it would be nice to have this done by our RegEx. 
+If your RegEx is correct, you will see that the list contains the 3 invoice files. What if we only want the actual filename without the file ending `pdf`? We could filter our list afterwards and remove the filename, but it would be nice to have this done by our RegEx.
 
-We can do this with groups. So your RegEx might look like this: `pattern = r"^invoice_[\w]+\.pdf$"`. If we now want to be able to reference the actual filename without ending, we can put round brackets around these characters. 
+We can do this with groups. So your RegEx might look like this: `pattern = r"^invoice_[\w]+\.pdf$"`. If we now want to be able to reference the actual filename without the ending, we can put round brackets around these characters.
 
 ```python
 import re
@@ -62,11 +62,11 @@ import re
 files = [
     "holiday1999.png",
     "invoice_car_insurance.pdf",
-    "invoice_telekom2021.pdf", 
-    "invoice_vattenfall2021.pdf", 
+    "invoice_telekom2021.pdf",
+    "invoice_vattenfall2021.pdf",
     "manual_mazda_cx5.pdf",
     "passport.jpg",
-    "resumee.pdf", 
+    "resumee.pdf",
 ]
 
 # Usage of round brackets around the file name
@@ -82,9 +82,9 @@ assert "invoice_vattenfall2021" in filtered
 print(filtered)
 print("Good RegEx")
 ```
-As you see when `filtered` got printed the filenames now only contain the content of our specified group. 
+As you see when `filtered` got printed the filenames now only contain the content of our specified group.
 
-Groups get referenced by index. Every opening round bracket will create a new index we can reference on later. The first group starts with index 1, the next has index 2 and so on. If we want to access a group that is not available, we will get an error. 
+Groups get referenced by index. Every opening round bracket will create a new index we can reference later on. The first group starts with index 1, the next has index 2 and so on. If we want to access a group that is not available, we will get an error.
 
 So in summary, groups allow us to reference sub-matches later on.
 
@@ -97,7 +97,7 @@ Another common use-case is to be able to use quantifiers for multiple characters
 m = re.search(r"abc{3}", "abccc")
 print(m.group())
 
-# How can we match "abc" 3 times 
+# How can we match "abc" 3 times
 m = re.search(r"abcabcabc", "abcabcabc")
 print(m.group())
 
@@ -110,20 +110,20 @@ m = re.search(r"([abc]{3}){3}", "abccbacbca")
 print(m.group())
 ```
 
-As you have seen in the examples above we can use groups to be able to repeat certain patterns with a quantifier. 
+As you have seen in the examples above we can use groups to be able to repeat certain patterns with a quantifier.
 
 ## Groups: Alternation
-Another use case for groups is using alternations. The meta character `|` means `or` and we can combine multiple RegEx within a group with that. 
+Another use case for groups is using alternations. The meta character `|` means `or` and we can combine multiple regular expressions within a group with that.
 
-Suppose we want to extract the salutation of a letter. The salutation may be "Dear Sir" or Dear Madamme". 
+Suppose we want to extract the salutation of a letter. The salutation may be "Dear Sir" or Dear Madam".
 
-We could write a RegEx which matches one or the other like this: `r"Dear (Sir|Madamme)"`. This will match on both cases but not if Sir **and** Madamme are missing. Be aware, that we can use every meta characters or "Sub RegEx" within the groups, not just string literals as seen in this example. 
+We could write a RegEx which matches one or the other like this: `r"Dear (Sir|Madam)"`. This will match on both cases, but not if Sir **and** Madam are missing. Be aware that we can use every meta characters or "Sub RegEx" within the groups, not just string literals as seen in this example.
 
 ## Exercise (Valid mobile number)
 
 We will now apply our new knowledge about *groups* in an exercise.
 
-We want to validate some mobile numbers. For that we write a function that returns `True` if passed string contains a valid mobile number, or False otherwise.
+We want to validate some mobile numbers. For that we write a function that returns `True` if passed string contains a valid mobile number, or `False` otherwise.
 
 We define valid numbers as followed:
 ```python
@@ -160,7 +160,7 @@ print("Second part:", m.group(2))
 ```
 
 ## Exercise (Valid hour)
-We want to write a RegEx which will verify valid times. 
+We want to write a RegEx which will verify valid times.
 
 ```python
 def valid_hour(string):
@@ -181,9 +181,9 @@ Could you solve the exercise? If yes, congratulations! This was no easy task at 
 ### *Hints*
 This exercise is not easy. Try to separate to problem into smaller sub-problems.
 
-For that try to solve the "minute-problem" first. 
+For that try to solve the "minute-problem" first.
 
-If you get stuck, use [RegEx101](https://regex101.com) and use this test string for the minute problem. Can you find a pattern? 
+If you get stuck, use [RegEx101](https://regex101.com) and use this test string for the minute problem. Can you find a pattern?
 
 ```
 :00
@@ -227,16 +227,17 @@ Note: Not every minute is posted in the test data... several minutes were skippe
 
 ### More hints
 
-If the pattern did not emerge, have a look at the last number. It does not matter what number we have here, everything is valid. So we can use `\d`. 
+If the pattern did not emerge, have a look at the last number. It does not matter what number we have here, everything is valid. So we can use `\d`.
 
-For the first number only 0 to 5 is valid, so we can use `[0-5]`. 
+For the first number only 0 to 5 is valid, so we can use `[0-5]`.
 
 We can combine these two and use: `[0-5]\d`.
 
-With this knowledge, try to solve the "hour problem". 
+With this knowledge, try to solve the "hour problem".
 
 ### More hints
-If you get stuck try to solve the hour problem isolated first. 
+If you have solved the "minute problem", continue with the hour problem separately.
+If you get stuck on the "minute problem", you can try to solve the hour problem in isolation first, as the two parts are independent of each other.
 
 If you RegEx101, use this test string:
 ```
@@ -272,12 +273,12 @@ Try to find a pattern. :)
 
 ### More hints
 
-If we look at the last pattern we see, that if we have a `0` or a `1` as a first digit, every second digit is valid: `[01]\d`
+If we look at the last pattern we see that if we have a `0` or a `1` as a first digit, every second digit is valid: `[01]\d`
 
-If we have a `2` as first digit, only `[0-3]` is valid as the second digit. 
+If we have a `2` as first digit, only `[0-3]` is valid as the second digit.
 
 # Exercise Valid IP address revisited
-We now want to have only valid ip adresses from a range between 0 and 255.
+We now want to have only valid IP addresses from a range between 0 and 255.
 
 ```python
 import re
@@ -299,13 +300,13 @@ assert better_ip_validator("192.168.1.xxx") is False
 print("Good RegEx!")
 ```
 
-This was a hard one! Nice done if you got it!
+This was a hard one! Nicely done if you got it!
 
-But don't be frustrated if not. It is really not easy at all and needs patience ;)
+But don't be frustrated if not. It is not easy at all and needs patience ;)
 
---- 
-There is another use case for groups, the so called look around groups. We will have a look at them in the next chapter. 
+---
+There is another use case for groups: the so-called lookaround groups. We will have a look at them in the next chapter.
 
 
 
-[Overview](./overview.md) | [Back (Anchors)](./anchors.md) | [Next (Lookaround)](./lookaround.md) 
+[Overview](./overview.md) | [Back (Anchors)](./anchors.md) | [Next (Lookaround)](./lookaround.md)
