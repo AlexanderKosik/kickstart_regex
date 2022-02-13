@@ -59,7 +59,7 @@ Let's examine the `re.sub` command.
 
 Now comes the interesting part. We referenced our first group in our replacement string by using `\1`. Every opening group can be referenced again by a group number starting from 1.
 
-So we substitute our match with the content of the first capturing group (the filename without ending), followed by a literal dot and the file ending png.
+So we substitute our match with the content of the first capturing group (the filename without ending), followed by a literal dot and the file ending `png`.
 
 That gives us a lot more possibilities and we will practice this soon. Before that just a word about non-capturing groups.
 
