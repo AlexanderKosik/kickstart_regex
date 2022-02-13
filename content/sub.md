@@ -44,7 +44,7 @@ filenames_mixed = [
 ]
 
 filenames_png = []
-for file in filenames_jpg:
+for file in filenames_mixed:
     # re.sub(pattern, replace, string)
     png_file = re.sub(r"(\w+)\.(jpg|png|jpeg|bmp)", r"\1.png", file)
     filenames_png.append(png_file)
