@@ -79,4 +79,7 @@ fix = re.sub(r'"(\w+\.\w{3,4})"', r'"images/\1"', line)
 ## Extended Exercise
 ```python
 fix = re.sub(r'src=\"(?!images)(?:[a-zA-Z0-9/_])*?/?(\w+\.\w+)\"', r'src="images/\1"', line)
+
+or alternative solution (credits go to Benny):
+fix = re.sub(r'(src=.*)(?<!images)(\"|/)(\w+\.\w{,4}) ', r'src="images/\3"', line)
 ```

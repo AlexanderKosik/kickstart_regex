@@ -194,4 +194,4 @@ This is the end of our RegEx journey. I hope you had some fun learning RegEx. Yo
 
 ![maya](ressources/maya.png "Maya")
 
-[Overview](./overview.md) | [Back (Lookaround)](./lookaround.md) |[Solutions] (./solutions.md)
+[Overview](./overview.md) | [Back (Lookaround)](./lookaround.md) |[Solutions](./solutions.md)
