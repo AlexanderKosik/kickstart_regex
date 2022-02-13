@@ -11,5 +11,8 @@
 * [7. Lookaround](lookaround.md)
 * [8. Substitution](sub.md)
 
+## Advanced
+* [Writing a RegEx Engine](engine.md)
+
 [Home](../README.md)
 
