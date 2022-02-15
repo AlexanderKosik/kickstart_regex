@@ -1,0 +1,9 @@
+Das ist eine Zeile ohne Zahl.
+10 ist eine Zeile mit einer kleinen Zahl.
+100 ist eine Zeile mit einer kleinen Zahl.
+1000 ist eine Zeile mit einer großen Zahl.
+20000 ist eine Zeile mit einer großen Zahl.
+300000 ist eine Zeile mit einer großen Zahl.
+4000000 ist eine Zeile mit einer großen Zahl.
+1990er Jahre sollen so stehen bleiben.
+Die Einwohnerzahl von Deutschland beträgt etwa 83240000.
