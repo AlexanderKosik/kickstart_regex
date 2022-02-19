@@ -5,6 +5,14 @@ In this chapter we build a RegEx engine from scratch. There are multiple ways of
 ## What is the RegEx engine?
 If we use a method from the RegEx module like `re.match(r"^\d\d:\d\d", "12:55")` this will be processed by a RegEx engine which 'understands' all the specific meta characters, quantifiers etc. (let's call these things **units**) explained in the RegEx course. This unterstanding of these units typically contains two steps: first the transformation of the RegEx into a machine friendly syntax and the execution of this as a second step. 
 
+## Two types of engines
+There are two types of RegEx engines: one type is called a **DFA**, the other is called a **NFA** machine. They differn in the way they are implemented but also in the way how fast they can give us back a result and also how powerfull they are. 
+
+We start by implementing a **DFA** regex machine. 
+
+[Overview](./overview.md) | [Next (DFA)](./engine/dfa.md)
+
+
 ## The simplest of all RegEx engines
 Let's start by implementing the simplest of all RegEx engines which can only understand string literals as units. No character classes, no special characters, nothing. 
 
