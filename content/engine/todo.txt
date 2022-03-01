@@ -47,3 +47,5 @@ z|0 0 3 0 0
 - Add search method
 
 - Add anchors
+
+- Match a text size 4 for an regex engine size 3 (or 4 with failure state)

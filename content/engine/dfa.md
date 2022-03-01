@@ -22,3 +22,9 @@ Drawn as a state machine the descibed behaviour looks like this:
 We now look at multiple implementations of a state machine in python. 
 
 ## A regular expression as a Finite State Machine
+
+Wenn wir kein "OR" und keine Quantifier wie +, * in unserem RegEx hätten, dann wäre es ein DFA. Der Zustand wäre deterministisch. Ein Character des Eingabetexts sorgt für eine State-Transition in einen anderen Zustand.
+
+Da wir aber OR haben, quasi ein Sprung des RegEx, handelt es sich um einen NFA. Ebenso der Quantifier `*`, wir wissen nicht, wie lange wir uns in diesem Zustand befinden.
+
+Kleenes theorem beweist, dass es für jeden RegEx auch einen entsprechenden finiten Automaten gibt.
