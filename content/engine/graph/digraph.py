@@ -28,6 +28,6 @@ class Digraph:
     def __str__(self):
         return str(self.adj)
 
-f = open("tinyDG.txt")
-g = Digraph(f)
-print(g)
+# f = open("tinyDG.txt")
+# g = Digraph(f)
+# print(g)
