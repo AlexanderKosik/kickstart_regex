@@ -1,9 +1,11 @@
 class DirectedDFS:
-    def __init__(self, graph, source):
+    def __init__(self, graph, *sources, debug=False):
         self.marked = [False] * graph.v
-        self.dfs(graph, source)
-        print("Reachable from source", source)
-        print(*[str(v) for v in range(graph.v) if self.marked[v]])
+        for source in sources:
+            self.dfs(graph, source)
+        if debug:
+            print("Reachable from source(s)", *sources)
+            print(*[str(v) for v in range(graph.v) if self.marked[v]])
 
     def dfs(self, graph, v):
         self.marked[v] = True

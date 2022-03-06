@@ -6,7 +6,8 @@ class Digraph:
         f = open(filename)
         return cls(f)
 
-    def __init__(self, iterable):
+    @classmethod
+    def from_iterable(cls, iterable):
         """
         Use format as in Algorithms 4th edition:
         int: num vertices
@@ -15,8 +16,9 @@ class Digraph:
         int, int: a b for edge a -> b
         ...
         """
-
-        self.v = int(next(iterable))
+        v = int(next(iterable))
+        self = cls(v)
+        self.v = v
         self.e = int(next(iterable))
 
         # create adjacency list
@@ -26,6 +28,15 @@ class Digraph:
             v, w = map(int, line.split(" "))
             self.add_edge(v, w)
 
+        return self
+
+    def __init__(self, vertex_number):
+        self.v = vertex_number
+        self.e = 0
+
+        self.adj = {v:[] for v in range(self.v)}
+
+
     def add_edge(self, v: int, w: int):
         self.adj[v].append(w)
 
@@ -34,5 +45,5 @@ class Digraph:
         return str(self.adj)
 
 # f = open("tinyDG.txt")
-# g = Digraph(f)
+# g = Digraph.from_iterable(f)
 # print(g)
