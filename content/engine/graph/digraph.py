@@ -1,6 +1,11 @@
 # Directed Graph implementation
 
 class Digraph:
+    @classmethod
+    def from_file(cls, filename):
+        f = open(filename)
+        return cls(f)
+
     def __init__(self, iterable):
         """
         Use format as in Algorithms 4th edition:
