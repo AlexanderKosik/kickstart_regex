@@ -12,7 +12,7 @@
 * [8. Substitution](sub.md)
 
 ## Advanced
-* [Writing a RegEx Engine](engine.md)
+See "Kickstart Regex Engine" to learn how a regex engine works.
 
 [Home](../README.md)
 
