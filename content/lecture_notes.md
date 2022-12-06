@@ -28,5 +28,7 @@
 Übungen
 
 # Character classes
+- Einführung Character classes [abc] a oder b oder c
+
 
 
