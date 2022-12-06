@@ -16,3 +16,17 @@
 - exercise
 
 # Quantifier
+- Übersicht Quantifier zeigen
+
+- ? Quantifier: Beispiel mit extraktion der IP-Adresse aus LogFile
+- Match or No-Match mit ?-Quantifier
+
+- * Quantifier
+- * ist greedy. Beispiel mit html
+
+- + Quantifier
+Übungen
+
+# Character classes
+
+
